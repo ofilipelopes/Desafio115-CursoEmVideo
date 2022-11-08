@@ -1,2 +1,1 @@
-# Desafio115-CursoEmVideo
- 
+# Resolução do Desafio 115 do curso em vídeo
