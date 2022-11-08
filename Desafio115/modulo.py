@@ -19,14 +19,14 @@ def menu(msg=''):
 
 
 def cadastro(file, nome, idade):
-    arquivo = open(file, 'a')
+    arquivo = open(file, 'a', encoding='UTF-8')
     arquivo.write(f'{nome:<47}{idade}\n')
     arquivo.close()
 
 
 def printlist(file):
     menu('PESSOAS CADASTRADAS')
-    arquivo = open(file)
+    arquivo = open(file, 'tr', encoding='UTF-8')
     for line in arquivo.readlines():
         print(line, end='')
     arquivo.close()

@@ -3,7 +3,7 @@ from Desafio115.modulo import *
 try:
     lista = open('lista.txt')
     lista.close()
-except (FileExistsError, FileNotFoundError):
+except (FileNotFoundError):
     lista = open('lista.txt', 'w')
     lista.write(f'{"NOME":<45}{"IDADE"}\n')
     lista.close()
