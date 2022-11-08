@@ -3,7 +3,7 @@ from Desafio115.modulo import *
 try:
     lista = open('lista.txt')
     lista.close()
-except (FileNotFoundError):
+except FileNotFoundError:
     lista = open('lista.txt', 'w')
     lista.write(f'{"NOME":<45}{"IDADE"}\n')
     lista.close()
@@ -21,14 +21,18 @@ while True:
     if opc == 1:
         printlist('lista.txt')
     elif opc == 2:
-        name = input('Nome: ').strip()
-        while not name.replace(' ', '').isalpha():
-            print(f'{vermelho}Nome inválido! São permitidos apenas letras e espaços.{limpar}')
+        try:    
             name = input('Nome: ').strip()
-        age = idade()
-        while age == 0:
-            print(f'{vermelho}Idade inválida! Por favor digite um número inteiro maior que 0.{limpar}')
+            while not name.replace(' ', '').isalpha():
+                print(f'{vermelho}Nome inválido! São permitidos apenas letras e espaços.{limpar}')
+                name = input('Nome: ').strip()
             age = idade()
+            while age == 0:
+                print(f'{vermelho}Idade inválida! Por favor digite um número inteiro maior que 0.{limpar}')
+                age = idade()
+        except KeyboardInterrupt:
+            print(f'\n{vermelho}Dados não preenchidos!{limpar}')
+            continue
         print(f'Novo registro de {name} adicionado.')
         cadastro('lista.txt', name, age)
     else:

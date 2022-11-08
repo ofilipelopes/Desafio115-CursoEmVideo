@@ -26,9 +26,10 @@ def cadastro(file, nome, idade):
 
 def printlist(file):
     menu('PESSOAS CADASTRADAS')
-    arquivo = open(file, 'tr', encoding='UTF-8')
+    arquivo = open(file, 'rt', encoding='UTF-8')
     for line in arquivo.readlines():
         print(line, end='')
+    print()
     arquivo.close()
 
 
@@ -38,3 +39,6 @@ def opcao():
         return opc
     except (TypeError, ValueError):
         return 0
+    except KeyboardInterrupt:
+        print(f'\n{vermelho}Cancelado!{limpar}')
+        return 3
